@@ -21,20 +21,20 @@ require File.join(File.dirname(__FILE__),  '..', '..', '..', '/spec_helper.rb')
 
 describe Ohai::System, "FreeBSD plugin platform" do
   before(:each) do
-    @ohai = Ohai::System.new    
+    @ohai = Ohai::System.new
     @ohai.stub!(:require_plugin).and_return(true)
     @ohai.stub!(:from).with("uname -s").and_return("FreeBSD")
-    @ohai.stub!(:from).with("uname -r").and_return("7.1")
+    @ohai.stub!(:from).with("uname -r").and_return("7.1-RELEASE")
     @ohai[:os] = "freebsd"
   end
   
   it "should set platform to lowercased lsb[:id]" do
-    @ohai._require_plugin("freebsd::platform")        
+    @ohai._require_plugin("freebsd::platform")
     @ohai[:platform].should == "freebsd"
   end
   
   it "should set platform_version to lsb[:release]" do
     @ohai._require_plugin("freebsd::platform")
-    @ohai[:platform_version].should == "7.1"
+    @ohai[:platform_version].should == "7.1-RELEASE"
   end
 end  

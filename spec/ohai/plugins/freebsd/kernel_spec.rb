@@ -21,7 +21,7 @@ require File.join(File.dirname(__FILE__), '..', '..', '..', '/spec_helper.rb')
 
 describe Ohai::System, "FreeBSD kernel plugin" do
   before(:each) do
-    @ohai = Ohai::System.new    
+    @ohai = Ohai::System.new
     @ohai.stub!(:require_plugin).and_return(true)
     @ohai.stub!(:from).with("uname -i").and_return("foo")
     @ohai.stub!(:from_with_regex).with("sysctl kern.securlevel").and_return("kern.securelevel: 1")
@@ -33,5 +33,4 @@ describe Ohai::System, "FreeBSD kernel plugin" do
     @ohai._require_plugin("freebsd::kernel")
     @ohai[:kernel][:os].should == @ohai[:kernel][:name]
   end
-
 end

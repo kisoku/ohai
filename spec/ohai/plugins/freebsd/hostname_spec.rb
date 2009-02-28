@@ -21,7 +21,7 @@ require File.join(File.dirname(__FILE__), '..', '..', '..', '/spec_helper.rb')
 
 describe Ohai::System, "FreeBSD hostname plugin" do
   before(:each) do
-    @ohai = Ohai::System.new    
+    @ohai = Ohai::System.new
     @ohai.stub!(:require_plugin).and_return(true)
     @ohai[:os] = "freebsd"
     @ohai.stub!(:from).with("hostname -s").and_return("katie")
@@ -29,6 +29,6 @@ describe Ohai::System, "FreeBSD hostname plugin" do
   end
   
   it_should_check_from("freebsd::hostname", "hostname", "hostname -s", "katie")
-  
+
   it_should_check_from("freebsd::hostname", "fqdn", "hostname -f", "katie.bethell")
 end
