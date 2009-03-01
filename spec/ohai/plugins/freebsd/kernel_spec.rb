@@ -23,8 +23,8 @@ describe Ohai::System, "FreeBSD kernel plugin" do
   before(:each) do
     @ohai = Ohai::System.new
     @ohai.stub!(:require_plugin).and_return(true)
-    @ohai.stub!(:from).with("uname -i").and_return("foo")
-    @ohai.stub!(:from_with_regex).with("sysctl kern.securlevel").and_return("kern.securelevel: 1")
+    @ohai.stub!(:from).with("uname -i").and_return("GENERIC")
+    @ohai.stub!(:from_with_regex).with("sysctl kern.securelevel").and_return("kern.securelevel: -1")
     @ohai[:kernel] = Mash.new
     @ohai[:kernel][:name] = "freebsd"
   end
@@ -32,5 +32,13 @@ describe Ohai::System, "FreeBSD kernel plugin" do
   it "should set the kernel_os to the kernel_name value" do
     @ohai._require_plugin("freebsd::kernel")
     @ohai[:kernel][:os].should == @ohai[:kernel][:name]
+  end
+
+  it_should_check_from_deep_mash("freebsd::kernel", "kernel", "ident", "uname -i", "GENERIC")
+
+  it "should set the kernel_securelevel value to the output of sysctl kern.securelvel" do
+    @ohai.should_receive(:from_with_regex).with(
+      "sysctl kern.securelevel", /kern.securelevel: (.+)$/).and_return("-1")
+    @ohai._require_plugin("freebsd::kernel")
   end
 end
