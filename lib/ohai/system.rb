@@ -201,7 +201,12 @@ module Ohai
     end
     
     def attributes_print(a)
-      JSON.pretty_generate(@data[a])
+      if a =~ /\/\/+/ 
+        path = a.split("//").inject(@data) {|memo, curr| memo[curr.to_sym]}
+        JSON.pretty_generate(path)
+      else
+        JSON.pretty_generate(@data[a])
+      end
     end
     # Create an Ohai::System from JSON
     def self.json_create(o)
