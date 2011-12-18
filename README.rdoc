@@ -32,7 +32,7 @@ Install the following RubyGems.
 
 * rake
 * rspec
-* extlib 
+* extlib
 * systemu
 * json
 
@@ -50,7 +50,7 @@ Ohai has some Rake tasks for doing various things.
   rake package          # Build all the packages
   rake repackage        # Force a rebuild of the package files
   rake spec             # Run specs
-  
+
 ($VERSION is the current version, from the GemSpec in Rakefile)
 
 == Spec Testing:

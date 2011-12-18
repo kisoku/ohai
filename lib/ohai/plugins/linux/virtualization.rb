@@ -60,14 +60,14 @@ if File.exists?("/usr/sbin/dmidecode")
       when /Manufacturer: Microsoft/
         found_virt_manufacturer = "virtualpc"
       when / Product Name: Virtual Machine/
-        if found_virt_manufacturer == "virtualpc" 
+        if found_virt_manufacturer == "virtualpc"
           virtualization[:emulator] = "virtualpc"
           virtualization[:role] = "guest"
         end
       when /Manufacturer: VMware/
         found_virt_manufacturer = "vmware"
       when /Product Name: VMware Virtual Platform/
-        if found_virt_manufacturer == "vmware" 
+        if found_virt_manufacturer == "vmware"
           virtualization[:emulator] = "vmware"
           virtualization[:role] = "guest"
         end

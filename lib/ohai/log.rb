@@ -6,9 +6,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,12 +22,12 @@ require 'logger'
 
 module Ohai
   class Log
-  
+
     @logger = nil
-    
+
     class << self
       attr_accessor :logger #:nodoc
-      
+
       # Use Ohai::Logger.init when you want to set up the logger manually.  Arguments to this method
       # get passed directly to Logger.new, so check out the documentation for the standard Logger class
       # to understand what to do here.
@@ -44,7 +44,7 @@ module Ohai
         @logger.formatter = Ohai::Log::Formatter.new()
         level(Ohai::Config.log_level)
       end
-      
+
       # Sets the level for the Logger object by symbol.  Valid arguments are:
       #
       #  :debug
@@ -71,9 +71,9 @@ module Ohai
           raise ArgumentError, "Log level must be one of :debug, :info, :warn, :error, or :fatal"
         end
       end
-      
+
       # Passes any other method calls on directly to the underlying Logger object created with init. If
-      # this method gets hit before a call to Ohai::Logger.init has been made, it will call 
+      # this method gets hit before a call to Ohai::Logger.init has been made, it will call
       # Ohai::Logger.init() with no arguments.
       def method_missing(method_symbol, *args)
         init() unless @logger
@@ -83,7 +83,7 @@ module Ohai
           @logger.send(method_symbol)
         end
       end
-      
+
     end # class << self
   end
 end

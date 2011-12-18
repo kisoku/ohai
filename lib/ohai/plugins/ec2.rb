@@ -36,7 +36,7 @@ def can_metadata_connect?(addr, port, timeout=2)
   connected = false
 
   begin
-    t.connect_nonblock(saddr)    
+    t.connect_nonblock(saddr)
   rescue Errno::EINPROGRESS
     r,w,e = IO::select(nil,[t],nil,timeout)
     if !w.nil?
@@ -87,7 +87,7 @@ def userdata()
 end
 
 def looks_like_ec2?
-  # Try non-blocking connect so we don't "block" if 
+  # Try non-blocking connect so we don't "block" if
   # the Xen environment is *not* EC2
   has_ec2_mac? && can_metadata_connect?(EC2_METADATA_ADDR,80)
 end

@@ -86,7 +86,7 @@ net_counters = Mash.new
 # From netstat(1), not sure of the implications:
 # Show the state of all network interfaces or a single interface
 # which have been auto-configured (interfaces statically configured
-# into a system, but not located at boot time are not shown). 
+# into a system, but not located at boot time are not shown).
 popen4("netstat -idn") do |pid, stdin, stdout, stderr|
   stdin.close
   stdout.each do |line|

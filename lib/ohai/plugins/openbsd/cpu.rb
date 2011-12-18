@@ -20,8 +20,8 @@ provides 'cpu'
 
 cpuinfo = Mash.new
 
-# OpenBSD provides most cpu information via sysctl, the only thing we need to 
-# to scrape from dmesg.boot is the cpu feature list. 
+# OpenBSD provides most cpu information via sysctl, the only thing we need to
+# to scrape from dmesg.boot is the cpu feature list.
 # cpu0: FPU,V86,DE,PSE,TSC,MSR,MCE,CX8,SEP,MTRR,PGE,MCA,CMOV,PAT,CFLUSH,DS,ACPI,MMX,FXSR,SSE,SSE2,SS,TM,SBF,EST,TM2
 
 File.open("/var/run/dmesg.boot").each do |line|

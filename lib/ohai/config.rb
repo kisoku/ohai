@@ -6,9 +6,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,10 +33,10 @@ module Ohai
       :log_location => STDOUT,
       :plugin_path => [ File.expand_path(File.join(File.dirname(__FILE__), 'plugins')) ]
     }
-    
+
     class << self
       include Ohai::Mixin::FromFile
-      
+
       # Pass Ohai::Config.configure() a block, and it will yield @configuration.
       #
       # === Parameters
@@ -44,7 +44,7 @@ module Ohai
       def configure(&block)
         yield @configuration
       end
-      
+
       # Get the value of a configuration option
       #
       # === Parameters
@@ -62,7 +62,7 @@ module Ohai
           raise ArgumentError, "Cannot find configuration option #{config_option.to_s}"
         end
       end
-      
+
       # Set the value of a configuration option
       #
       # === Parameters
@@ -74,7 +74,7 @@ module Ohai
       def []=(config_option, value)
         @configuration[config_option.to_sym] = value
       end
-      
+
       # Check if Ohai::Config has a configuration option.
       #
       # === Parameters
@@ -86,7 +86,7 @@ module Ohai
       def has_key?(key)
         @configuration.has_key?(key.to_sym)
       end
-      
+
       # Allows for simple lookups and setting of configuration options via method calls
       # on Ohai::Config.  If there any arguments to the method, they are used to set
       # the value of the configuration option.  Otherwise, it's a simple get operation.
@@ -112,7 +112,7 @@ module Ohai
           raise ArgumentError, "Cannot find configuration option #{method_symbol.to_s}"
         end
       end
-      
+
     end # class << self
   end
 end

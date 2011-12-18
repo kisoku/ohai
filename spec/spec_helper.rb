@@ -15,7 +15,7 @@ def it_should_check_from(plugin, attribute, from, value)
     @ohai.should_receive(:from).with(from).and_return(value)
     @ohai._require_plugin(plugin)
   end
-  
+
   it "should set the #{attribute} to the value from '#{from}'" do
     @ohai._require_plugin(plugin)
     @ohai[attribute].should == value
@@ -27,7 +27,7 @@ def it_should_check_from_mash(plugin, attribute, from, value)
     @ohai.should_receive(:from).with(from).and_return(value)
     @ohai._require_plugin(plugin)
   end
-  
+
   it "should set the #{plugin}[:#{attribute}] to the value from '#{from}'" do
     @ohai._require_plugin(plugin)
     @ohai[plugin][attribute].should == value
@@ -40,13 +40,13 @@ def it_should_check_from_deep_mash(plugin, mash, attribute, from, value)
     @ohai.should_receive(:from).with(from).and_return(value)
     @ohai._require_plugin(plugin)
   end
- 
+
   it "should set the #{mash.inspect}[:#{attribute}] to the value from '#{from}'" do
     @ohai._require_plugin(plugin)
-    if mash.is_a?(String) 
+    if mash.is_a?(String)
       @ohai[mash][attribute].should == value
     elsif mash.is_a?(Array)
-      if mash.length == 2 
+      if mash.length == 2
         @ohai[mash[0]][mash[1]][attribute].should == value
       elsif mash.length == 3
         @ohai[mash[0]][mash[1]][mash[2]][attribute].should == value
