@@ -6,9 +6,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -53,7 +53,7 @@ dmi[:processor][:version] =       from("dmidecode -s processor-version")
 
 if dmi[:version].to_f >= 2.8
   dmi[:chassis][:type] =            from("dmidecode -s chassis-type")
-  dmi[:system][:uuid] =             from("dmidecode -s system-uuid") 
-  dmi[:processor][:family] =        from("dmidecode -s processor-family") 
+  dmi[:system][:uuid] =             from("dmidecode -s system-uuid")
+  dmi[:processor][:family] =        from("dmidecode -s processor-family")
   dmi[:processor][:frequency] =     from("dmidecode -s processor-frequency")
 end

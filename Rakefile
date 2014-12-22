@@ -21,13 +21,13 @@ spec = Gem::Specification.new do |s|
   s.author = AUTHOR
   s.email = EMAIL
   s.homepage = HOMEPAGE
-  
+
   s.add_dependency "json"
   s.add_dependency "extlib"
   s.add_dependency "systemu"
   s.bindir = "bin"
   s.executables = %w(ohai)
-  
+
   s.require_path = 'lib'
   s.autorequire = GEM
   s.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{extras,lib,spec}/**/*")

@@ -38,7 +38,7 @@ describe Ohai::System, "Linux virtualization platform" do
       File.should_receive(:exists?).with("/proc/xen/capabilities").and_return(true)
       File.stub!(:read).with("/proc/xen/capabilities").and_return("control_d")
       @ohai._require_plugin("linux::virtualization")
-      @ohai[:virtualization][:emulator].should == "xen" 
+      @ohai[:virtualization][:emulator].should == "xen"
       @ohai[:virtualization][:role].should == "host"
     end
 
@@ -64,7 +64,7 @@ describe Ohai::System, "Linux virtualization platform" do
       @ohai[:virtualization][:emulator].should == "kvm"
       @ohai[:virtualization][:role].should == "host"
     end
-    
+
     it "should set kvm guest if /proc/cpuinfo contains QEMU Virtual CPU" do
       File.should_receive(:exists?).with("/proc/cpuinfo").and_return(true)
       File.stub!(:read).with("/proc/cpuinfo").and_return("QEMU Virtual CPU")

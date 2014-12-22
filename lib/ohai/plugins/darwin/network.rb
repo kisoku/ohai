@@ -36,7 +36,7 @@ def parse_media(media_string)
             media[line_array[i]]["options"] << opt unless media[line_array[i]]["options"].include?(opt)
           end
         else
-          media[line_array[i]]["options"] = $1.split(",") 
+          media[line_array[i]]["options"] = $1.split(",")
         end
       else
         if line_array[i].eql?("autoselect")
@@ -80,7 +80,7 @@ def locate_interface(ifaces, ifname, mac)
       return ifc if addr.eql? mac
     end
   end
-  
+
   nil
 end
 

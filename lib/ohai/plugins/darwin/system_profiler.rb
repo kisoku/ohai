@@ -18,7 +18,7 @@
 
 provides "system_profile"
 
-begin  
+begin
   require 'plist'
 
   system_profile Array.new

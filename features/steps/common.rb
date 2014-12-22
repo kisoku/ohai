@@ -47,7 +47,7 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
   FileUtils.chdir(@active_project_folder) do
     if Object.const_defined?("APP_ROOT")
       APP_ROOT.replace(FileUtils.pwd)
-    else 
+    else
       APP_ROOT = FileUtils.pwd
     end
     run_generator(generator, arguments.split(' '), SOURCES)
@@ -117,7 +117,7 @@ Then %r{^output (does|does not) match \/(.*)\/} do |does, regex|
   actual_output = File.read(@stdout)
   (does == 'does') ?
     actual_output.should(match(/#{regex}/)) :
-    actual_output.should_not(match(/#{regex}/)) 
+    actual_output.should_not(match(/#{regex}/))
 end
 
 Then %r{^contents of file '(.*)' (does|does not) match \/(.*)\/} do |file, does, regex|

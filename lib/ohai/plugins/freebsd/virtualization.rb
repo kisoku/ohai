@@ -55,7 +55,7 @@ if File.exists?("/usr/local/sbin/dmidecode")
       when /Manufacturer: VMware/
         found_virt_manufacturer = "vmware"
       when /Product Name: VMware Virtual Platform/
-        if found_virt_manufacturer == "vmware" 
+        if found_virt_manufacturer == "vmware"
           virtualization[:system] = "vmware"
           virtualization[:role] = "guest"
         end

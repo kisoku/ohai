@@ -86,12 +86,12 @@ net_counters = Mash.new
 # From netstat(1), not sure of the implications:
 # Show the state of all network interfaces or a single interface
 # which have been auto-configured (interfaces statically configured
-# into a system, but not located at boot time are not shown). 
+# into a system, but not located at boot time are not shown).
 popen4("netstat -ibdn") do |pid, stdin, stdout, stderr|
   stdin.close
   stdout.each do |line|
     # Name    Mtu Network       Address              Ipkts Ierrs     Ibytes    Opkts Oerrs     Obytes  Coll Drop
-    # ed0    1500 <Link#1>      54:52:00:68:92:85   333604    26  151905886   175472     0   24897542     0  905 
+    # ed0    1500 <Link#1>      54:52:00:68:92:85   333604    26  151905886   175472     0   24897542     0  905
     # $1                        $2                      $3    $4         $5       $6    $7         $8    $9  $10
     if line =~ /^([\w\.\*]+)\s+\d+\s+<Link#\d+>\s+([\w:]*)\s*(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/
       net_counters[$1] = Mash.new unless net_counters[$1]

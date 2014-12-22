@@ -69,7 +69,7 @@ describe Ohai::System, "plugin ec2" do
 
   describe "without ec2 mac and metadata address connected" do
     it_should_behave_like "!ec2"
-    
+
     before(:each) do
       @ohai[:network][:interfaces][:eth0][:arp] = {"169.254.1.0"=>"00:50:56:c0:00:08"}
     end

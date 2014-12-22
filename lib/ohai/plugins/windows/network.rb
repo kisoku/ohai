@@ -30,9 +30,9 @@ def derive_bcast(ipaddr, ipmask, zero_bcast = false)
     if zero_bcast
       bcast_int = ipaddr_int & ipmask_int
     else
-      bcast_int = ipaddr_int | 2 ** 32 - ipmask_int - 1  
-    end  
-    bcast = [bcast_int].pack("N").unpack("C4").join(".")                                     
+      bcast_int = ipaddr_int | 2 ** 32 - ipmask_int - 1
+    end
+    bcast = [bcast_int].pack("N").unpack("C4").join(".")
     return bcast
   rescue
     return nil

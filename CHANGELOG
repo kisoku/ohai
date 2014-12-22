@@ -3,7 +3,7 @@ Release Notes - Ohai - Version 0.3.2
 http://tickets.opscode.com
 
 ** Bug
-    * [OHAI-93] - plugin linux::kernel threw exception #<Errno::ENOENT: No such file or directory - /sbin/lsmod> 
+    * [OHAI-93] - plugin linux::kernel threw exception #<Errno::ENOENT: No such file or directory - /sbin/lsmod>
     * [OHAI-99] - Network media hash on darwin is nigh-unsable
     * [OHAI-100] - hostname output differs between redhat dirivatives and debian dirivatives distributions
     * [OHAI-102] - no uptime data for darwin/osx
